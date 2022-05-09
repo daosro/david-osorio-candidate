@@ -3,6 +3,19 @@ import { createUseStyles } from "react-jss";
 export default createUseStyles(
   {
     "@global": {
+      // Change the aplication scrollbar color and size
+      "*::-webkit-scrollbar": {
+        width: "5px",
+        height: "5px",
+      },
+      "*::-webkit-scrollbar-track": {
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        borderRadius: '10px',
+      },
+      "*::-webkit-scrollbar-thumb": {
+        backgroundColor: '#dfdfdf',
+        borderRadius: '10px',
+      },
       html: {
         height: "100%",
       },
@@ -13,8 +26,8 @@ export default createUseStyles(
         margin: "0",
         fontFamily:
           "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif",
-        WebkitFontSmoothing: 'antialiased',
-        MozOsxFontSmoothing: 'grayscale',
+        WebkitFontSmoothing: "antialiased",
+        MozOsxFontSmoothing: "grayscale",
       },
       code: {
         fontFamily:
@@ -29,6 +42,7 @@ export default createUseStyles(
       minHeight: "calc(100vh - 50px)",
     },
     footer: {
+      zIndex: 4,
       position: "sticky",
       bottom: "0",
     },
