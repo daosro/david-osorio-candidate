@@ -8,6 +8,7 @@ export default createUseStyles(
       flexDirection: "column",
       backgroundColor: "#000000",
       borderRightColor: "#393939",
+      width: props => `calc(((400px / 60) * ${props.duration}) - 1px)`
     },
     live: {
       backgroundColor: "#393939",

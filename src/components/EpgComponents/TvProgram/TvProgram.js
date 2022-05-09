@@ -19,17 +19,19 @@ const TvProgram = ({
   end,
   duration = getMinutesBetweenDates(start, end, DATE_PATTERN_YYYY_MM_DD_T),
 }) => {
-  const classes = useStyles();
+  const classes = useStyles({ duration });
   const [isLiveProgram, setIsLiveProgram] = useState(true);
 
   /**
    * Check if program is live every minute to update the styles,
    * I know that is not the best way to do it, with more time I would calculate the remaining time to start or end
-   * the program and update the styles accordingly to the remaining time not every minute. 
+   * the program and update the styles accordingly to the remaining time not every minute.
    */
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsLiveProgram(isNowBetweenDates(start, end, DATE_PATTERN_YYYY_MM_DD_T));
+      setIsLiveProgram(
+        isNowBetweenDates(start, end, DATE_PATTERN_YYYY_MM_DD_T)
+      );
     }, 1000);
     return () => clearInterval(interval);
   }, [start, end]);
@@ -51,10 +53,7 @@ const TvProgram = ({
   );
 
   return (
-    <div
-      className={clsx(classes.root, { [classes.live]: isLiveProgram })}
-      style={{ width: `calc(((400px / 60) * ${duration}) - 1px)` }}
-    >
+    <div className={clsx(classes.root, { [classes.live]: isLiveProgram })}>
       <div className={classes.content}>
         <div className={classes.title}>{title}</div>
         <div className={classes.date}>

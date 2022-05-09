@@ -7,6 +7,7 @@ export default createUseStyles(
       top: '3px',
       left: "150px",
       width: "2px",
+      height: props => `calc((${props.numberOfChannels} * 3.5rem) + 2rem)`,
       "&::before": {
         content: '""',
         position: "absolute",
