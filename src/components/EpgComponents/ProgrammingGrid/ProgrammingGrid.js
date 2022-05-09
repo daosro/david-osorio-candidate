@@ -29,7 +29,6 @@ const ProgrammingGrid = ({ channels }) => {
         <div ref={epgContainerRef} className={classes.gridProgramRow}>
           <TimeLine numberOfChannels={channels.length} />
           <div className={classes.hoursRow}>
-            >
             {LIST_OF_HOURS_IN_A_DAY.map((hour) => (
               <div key={hour} className={classes.hourRoot}>
                 <div className={classes.hour}>{hour} </div>
