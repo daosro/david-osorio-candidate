@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   MdHome,
   MdLiveTv,
@@ -13,15 +13,16 @@ import { EPGS_PATH, HOME_PATH } from "../../constants/routes";
 import BottomTabs from "../BottomTabs";
 
 const Footer = () => {
+
   return (
     <BottomTabs>
-      <Link to={HOME_PATH}>
+      <NavLink exact={true} strict to={HOME_PATH} >
         <MdHome />
-      </Link>
+      </NavLink>
       <MdLiveTv />
-      <Link to={EPGS_PATH}>
+      <NavLink exact={true} to={EPGS_PATH} >
         <MdViewList />
-      </Link>
+      </NavLink>
       <MdReplay />
       <MdMenuBook />
     </BottomTabs>

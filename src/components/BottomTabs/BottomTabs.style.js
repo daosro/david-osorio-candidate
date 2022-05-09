@@ -13,6 +13,9 @@ export default createUseStyles({
     justifyContent: 'space-between',
     '& a': {
       color: '#ffffff',
+    },
+    '& a.active': {
+      color: '#e1a21e',
     }
   },
 }, { name: 'BottomTabs' });
