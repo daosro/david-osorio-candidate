@@ -16,11 +16,11 @@ const Footer = () => {
 
   return (
     <BottomTabs>
-      <NavLink exact={true} strict to={HOME_PATH} >
+      <NavLink to={HOME_PATH} >
         <MdHome />
       </NavLink>
       <MdLiveTv />
-      <NavLink exact={true} to={EPGS_PATH} >
+      <NavLink to={EPGS_PATH} >
         <MdViewList />
       </NavLink>
       <MdReplay />
