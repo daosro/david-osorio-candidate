@@ -18,6 +18,12 @@ export default createUseStyles(
       height: "50%",
       justifyContent: "center",
     },
+    icon: {
+      display: "flex",
+      width: "50%",
+      height: "50%",
+      justifyContent: "center",
+    },
   },
   { name: "ChannelImage" }
 );
