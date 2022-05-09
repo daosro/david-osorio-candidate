@@ -18,6 +18,7 @@ export default createUseStyles(
       flexDirection: "row",
       marginLeft: "4rem",
       width: "calc((400px * 24))",
+      borderTop: '1px solid #575757',
     },
     hourRoot: {
       width: "400px",
@@ -39,7 +40,7 @@ export default createUseStyles(
     channelRoot: {
       display: "flex",
       flexDirection: "row",
-      width: "calc((400px * 24) + 150px)",
+      width: "calc((400px * 24))",
     },
     channelList: {
       position: "sticky",
@@ -62,6 +63,7 @@ export default createUseStyles(
       border: "1px solid #393939",
       cursor: "pointer",
     },
+
   },
   { name: "ProgrammingGrid" }
 );
