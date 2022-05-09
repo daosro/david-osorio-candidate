@@ -34,7 +34,7 @@ export const getMinutesOfTheDay = () => {
   const now = moment();
   const mmtMidnight = moment().startOf("day");
   return Math.abs(now.diff(mmtMidnight, "minutes"));
-}
+};
 /**
  * Get the list of ahours in a day
  * @returns {Array} of hours in a day
@@ -43,3 +43,14 @@ export const getListOfHoursInADay = () =>
   Array(24)
     .fill(null)
     .map((_, index) => `${String(index).padStart(2, "0")}:00`);
+
+/**
+ * Return the list of days in a week
+ * @returns {Array} of days in a week in ddd DD.MM. format
+ */
+export const getDaysOfTheWeek = () =>
+  Array(7)
+    .fill(null)
+    .map((_, index) =>
+      moment().startOf("week").add(index, "days").format("ddd DD.MM.")
+    );

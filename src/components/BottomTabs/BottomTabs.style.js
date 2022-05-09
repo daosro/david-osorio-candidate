@@ -3,7 +3,7 @@ import { createUseStyles } from 'react-jss';
 export default createUseStyles({
   root: {
     display: 'flex',
-    backgroundColor: '#000000',
+    backgroundColor: '#202020',
     position: 'sticky',
     bottom: 0,
     height: '50px',

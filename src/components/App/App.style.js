@@ -45,6 +45,7 @@ export default createUseStyles(
       zIndex: 4,
       position: "sticky",
       bottom: "0",
+      boxShadow: '0px -2px 5px #101010',
     },
   },
   { name: "App" }
