@@ -14,8 +14,8 @@ function App() {
     <BrowserRouter>
       <div className={classes.root}>
         <Routes>
-          <Route exact path={HOME_PATH} element={<Home />} />
-          <Route exact path={EPGS_PATH} element={<EpgScreen />} />
+          <Route exact={true} path={HOME_PATH} element={<Home />} />
+          <Route exact={true} path={EPGS_PATH} element={<EpgScreen />} />
         </Routes>
       </div>
       <div className={classes.footer}>
