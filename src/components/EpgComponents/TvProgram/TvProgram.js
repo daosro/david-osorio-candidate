@@ -1,5 +1,8 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
+import { useNavigate  } from "react-router-dom";
+import { generatePath } from "react-router";
+
 import {
   DATE_PATTERN_HHMM,
   DATE_PATTERN_YYYY_MM_DD_T,
@@ -7,10 +10,12 @@ import {
 import {
   formatDateStringToPattern,
   getMinutesBetweenDates,
+  isDateBeforeNow,
   isNowBetweenDates,
 } from "../../../utils/date";
 
 import useStyles from "./TvProgram.style";
+import { LIVE_PATH, VODP_PATH } from "../../../constants/routes";
 
 const TvProgram = ({
   title,
@@ -19,8 +24,10 @@ const TvProgram = ({
   end,
   duration = getMinutesBetweenDates(start, end, DATE_PATTERN_YYYY_MM_DD_T),
 }) => {
-  const classes = useStyles({ duration });
-  const [isLiveProgram, setIsLiveProgram] = useState(true);
+  const navigate = useNavigate ();
+  const [isLiveProgram, setIsLiveProgram] = useState(false);
+  const [isProgramOver, setIsProgramOver] = useState(false);
+  const classes = useStyles({ duration, useLink: isLiveProgram || isProgramOver });
 
   /**
    * Check if program is live every minute to update the styles,
@@ -28,11 +35,21 @@ const TvProgram = ({
    * the program and update the styles accordingly to the remaining time not every minute.
    */
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIsLiveProgram(
-        isNowBetweenDates(start, end, DATE_PATTERN_YYYY_MM_DD_T)
-      );
-    }, 1000);
+    let interval;
+    const isProgramEnded = isDateBeforeNow(end, DATE_PATTERN_YYYY_MM_DD_T);
+    if (!isProgramEnded) {
+      interval = setInterval(() => {
+        setIsLiveProgram(
+          isNowBetweenDates(start, end, DATE_PATTERN_YYYY_MM_DD_T)
+        );
+        const isProgramEnded = isDateBeforeNow(end, DATE_PATTERN_YYYY_MM_DD_T);
+        setIsProgramOver(isProgramEnded);
+        if (isProgramEnded) {
+          clearInterval(interval);
+        }
+      }, 1000);
+    }
+    setIsProgramOver(isProgramEnded);
     return () => clearInterval(interval);
   }, [start, end]);
 
@@ -52,8 +69,21 @@ const TvProgram = ({
     [start, end]
   );
 
+  const handleClick = useCallback(() => {
+    if (isLiveProgram || isProgramOver) {
+      navigate(
+        isProgramOver
+          ? generatePath(VODP_PATH, { programId: id })
+          : generatePath(LIVE_PATH, { channelId: id })
+      );
+    }
+  }, [id, isLiveProgram, isProgramOver]);
+
   return (
-    <div className={clsx(classes.root, { [classes.live]: isLiveProgram })}>
+    <div
+      className={clsx(classes.root, { [classes.live]: isLiveProgram })}
+      onClick={handleClick}
+    >
       <div className={classes.content}>
         <div className={classes.title}>{title}</div>
         <div className={classes.date}>

@@ -8,10 +8,15 @@ export default createUseStyles(
       flexDirection: "column",
       backgroundColor: "#000000",
       borderRightColor: "#393939",
-      width: props => `calc(((400px / 60) * ${props.duration}) - 1px)`
+      width: props => `calc(((400px / 60) * ${props.duration}) - 1px)`,
+      cursor: props => props.useLink ? "pointer" : "default",
     },
     live: {
       backgroundColor: "#393939",
+      transition: 'transform .5s',
+      '&:hover': {
+        transform: 'scale(1.1)',
+      }
     },
     content: {
       padding: "0.5rem",

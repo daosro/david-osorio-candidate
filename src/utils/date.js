@@ -36,6 +36,13 @@ export const getMinutesOfTheDay = () => {
   const mmtMidnight = moment().startOf("day");
   return Math.abs(now.diff(mmtMidnight, "minutes"));
 };
+
+export const isDateBeforeNow = (date, pattern) => {
+  const now = moment();
+  const dateToCompare = moment(date, pattern);
+  return dateToCompare.isBefore(now);
+}
+
 /**
  * Get the list of ahours in a day
  * @returns {Array} of hours in a day
