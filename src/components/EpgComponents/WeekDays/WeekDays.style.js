@@ -26,7 +26,12 @@ export default createUseStyles(
       textTransform: "uppercase",
       fontSize: "0.8rem",
       width: "calc(100vw - 4rem)",
+      color: '#939393',
     },
+    currentDay:{
+      color: '#ffffff',
+      fontWeight: 'bold',
+    }
   },
   { name: "WeekDays" }
 );

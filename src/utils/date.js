@@ -1,4 +1,5 @@
 import moment from "moment";
+import { DATE_PATTERN_DDD_DD_MM } from "../constants/date";
 
 /**
  * Format date to string
@@ -52,5 +53,5 @@ export const getDaysOfTheWeek = () =>
   Array(7)
     .fill(null)
     .map((_, index) =>
-      moment().startOf("week").add(index, "days").format("ddd DD.MM.")
+      moment().startOf("week").add(index, "days").format(DATE_PATTERN_DDD_DD_MM)
     );
