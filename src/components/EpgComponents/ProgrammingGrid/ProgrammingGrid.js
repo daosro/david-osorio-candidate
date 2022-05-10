@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { getListOfHoursInADay, getMinutesOfTheDay } from "../../../utils/date";
 import WeekDays from "../WeekDays";
 import TimeLine from "../TimeLine";
@@ -26,13 +26,22 @@ const ProgrammingGrid = ({ channels, favChannelIds }) => {
     }
   }, [channels, favChannelIds, filterFavorites]);
 
+  const scrollToCurrentTime = useMemo(
+    () => () => {
+      const minutes = getMinutesOfTheDay();
+      const scrollToX =
+        (400 / 60) * minutes - (document.body.clientWidth / 2 - 50);
+      epgContainerRef.current.scrollTo({ left: scrollToX, behavior: "smooth" });
+    },
+    [epgContainerRef]
+  );
+
   // Scroll to the current time in the grid
-  const handleNowButtonClick = useCallback(() => {
-    const minutes = getMinutesOfTheDay();
-    const scrollToX =
-      (400 / 60) * minutes - (document.body.clientWidth / 2 - 50);
-    epgContainerRef.current.scrollTo({ left: scrollToX, behavior: "smooth" });
-  }, [epgContainerRef]);
+  useEffect(() => {
+    setTimeout(() => {
+      scrollToCurrentTime();
+    }, 2000);
+  }, [scrollToCurrentTime]);
 
   const handleFilterFavoritesClick = useCallback(() => {
     // TODO: To use this functionality, the user should be logged in.
@@ -41,7 +50,7 @@ const ProgrammingGrid = ({ channels, favChannelIds }) => {
 
   return (
     <>
-      <button className={classes.nowButton} onClick={handleNowButtonClick}>
+      <button className={classes.nowButton} onClick={scrollToCurrentTime}>
         NOW
       </button>
 
