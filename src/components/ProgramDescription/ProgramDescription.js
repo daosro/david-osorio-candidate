@@ -5,7 +5,7 @@ import useStyles from "./ProgramDescription.style";
 const ProgramDescription = ({ programInfo }) => {
   const classes = useStyles();
 
-  const { images, channelTitle, title, meta, description } = useMemo(
+  const { channelImages, channelTitle, title, meta, description } = useMemo(
     () => programInfo || {},
     [programInfo]
   );
@@ -13,7 +13,7 @@ const ProgramDescription = ({ programInfo }) => {
     <div className={classes.root}>
       <div className={classes.container}>
         <div className={classes.centerContent}>
-          <object className={classes.channelIcon} data={images?.icon} type="image/png">
+          <object className={classes.channelIcon} data={channelImages?.logo} type="image/png">
           <img
             alt={title}
             className={classes.channelIcon}

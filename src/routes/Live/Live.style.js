@@ -13,7 +13,6 @@ export default createUseStyles(
       transform: "translateX(-50%)",
     },
     info: {
-      marginTop: "4.2rem",
       width: "67vw",
       display: "flex",
       position: "relative",
