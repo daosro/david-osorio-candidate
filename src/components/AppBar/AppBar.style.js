@@ -11,6 +11,7 @@ export default createUseStyles(
       alignItems: "center",
       zIndex: 4,
       position: "fixed",
+      color: '#ffffff', 
     },
     icon: {
       height: "2em",
