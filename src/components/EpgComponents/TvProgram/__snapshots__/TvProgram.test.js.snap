@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TvProgram should render correctly 1`] = `
+<div>
+  <div
+    class="TvProgram-root-0-2-1 TvProgram-root-d0-0-2-6"
+  >
+    <div
+      class="TvProgram-content-0-2-3"
+    >
+      <div
+        class="TvProgram-title-0-2-4"
+      />
+      <div
+        class="TvProgram-date-0-2-5"
+      >
+        Invalid date
+         - 
+        Invalid date
+      </div>
+    </div>
+  </div>
+</div>
+`;

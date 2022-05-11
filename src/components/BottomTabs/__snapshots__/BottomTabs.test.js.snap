@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BottomTabs should render correctly 1`] = `
+<div>
+  <div
+    class="BottomTabs-root-0-2-1"
+  />
+</div>
+`;
+
+exports[`BottomTabs should render correctly with children 1`] = `
+<div>
+  <div
+    class="BottomTabs-root-0-2-1"
+  >
+    <div>
+      Mock div
+    </div>
+  </div>
+</div>
+`;
